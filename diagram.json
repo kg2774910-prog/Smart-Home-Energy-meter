@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -124.8, "left": 62.44, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 124.6,
+      "left": -209.1,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -17.6,
+      "left": 220.4,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "esp:GND.1", "pot1:GND", "black", [ "h0" ] ],
+    [ "esp:34", "pot1:SIG", "green", [ "h0" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "lcd1:GND", "esp:GND.3", "black", [ "v57.6", "h-240" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "v48", "h-221" ] ],
+    [ "lcd1:SCL", "esp:22", "green", [ "v19.2", "h-211.5" ] ]
+  ],
+  "dependencies": {}
+}
